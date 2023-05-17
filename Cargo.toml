@@ -1,0 +1,28 @@
+[package]
+name = "utilities-wasm"
+version = "0.1.0"
+authors = ["Brendan Dagys"]
+description = "Common utility functions using WASM."
+license = "MIT/Apache-2.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.86"
+
+# async-std = "1.12.0"
+# futures = "0.3.12"
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'Node',
+  'Window',
+]

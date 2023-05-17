@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>hello-wasm example</title>
+  </head>
+  <body>
+    <script type="module">
+      import init, { add, greet } from './pkg/utilities_wasm.js';
+
+      async function run() {
+        await init();
+        console.log(add(1, 2))
+        // console.log(add(1, 2))
+
+        greet('Brendan');
+        // And afterwards we can use all the functionality defined in wasm.
+        // const result = add(1, 2);
+        // console.log(`1 + 2 = ${result}`);
+        // if (result !== 3)
+          // throw new Error("wasm addition doesn't work!");
+      }
+
+      run();
+      // import init, {greet} from "./pkg/utilities_wasm.js";
+      // console.log("Hello");
+      // init()
+      //   .then(() => {
+      //   //   greet("WebAssembly");
+      //   const a = new MapAsync();
+      //   console.log(a.mapAsync);
+      //   });
+    </script>
+  </body>
+</html>
