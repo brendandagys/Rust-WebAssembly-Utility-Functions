@@ -2,34 +2,29 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>hello-wasm example</title>
+    <title>Utilities Example</title>
   </head>
   <body>
     <script type="module">
-      import init, { add, greet } from './pkg/utilities_wasm.js';
+      import init, {
+        compact_array,
+        distinct,
+        keys,
+        int_val,
+        float_val,
+      } from './pkg/utilities_wasm.js';
 
       async function run() {
         await init();
-        console.log(add(1, 2))
-        // console.log(add(1, 2))
 
-        greet('Brendan');
-        // And afterwards we can use all the functionality defined in wasm.
-        // const result = add(1, 2);
-        // console.log(`1 + 2 = ${result}`);
-        // if (result !== 3)
-          // throw new Error("wasm addition doesn't work!");
+        console.log(compact_array([1, 2, 3, 'a', null, undefined]));
+        console.log(keys({ name: "brendan", age: "29" }))
+        console.log(distinct([1, 2, 2, 3, null, null, undefined, undefined, {}, {}, [1, 2], [1, 2]]));
+        console.log(int_val(null), int_val("204"), int_val(123), int_val(123.34), int_val(0), int_val([]), int_val(undefined), int_val({}))
+        console.log(float_val(123), float_val(123.44322), float_val(0), float_val("a"), float_val("10"))
       }
 
       run();
-      // import init, {greet} from "./pkg/utilities_wasm.js";
-      // console.log("Hello");
-      // init()
-      //   .then(() => {
-      //   //   greet("WebAssembly");
-      //   const a = new MapAsync();
-      //   console.log(a.mapAsync);
-      //   });
     </script>
   </body>
 </html>
